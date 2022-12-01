@@ -18,6 +18,12 @@ def find_highest_sum(calories):
             highest = elf_sum
     return highest
 
+def find_highest_sum_alternative(calories):
+    elfs = []
+    for elf in calories:
+        elfs.append(sum(elf))
+    return max(elfs)
+
 def find_three_highest_sum(calories):
     highest = [0, 0, 0]
     for elf in calories:
@@ -32,8 +38,9 @@ def main():
         input = file.readlines()
         calories = process_input(input)
         highest_sum = find_highest_sum(calories)
+        highest_sum_alternative = find_highest_sum_alternative(calories)
         three_highest_sum = find_three_highest_sum(calories)
-        print(highest_sum, three_highest_sum)
+        print(highest_sum, highest_sum_alternative, three_highest_sum)
 
 
 if __name__=="__main__":
