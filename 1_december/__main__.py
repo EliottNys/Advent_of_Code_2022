@@ -46,4 +46,4 @@ def main():
 if __name__=="__main__":
     main()
 
-#answer : 71934
+#answer : 71934 & 211447
