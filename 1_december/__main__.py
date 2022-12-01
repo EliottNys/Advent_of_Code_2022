@@ -10,7 +10,6 @@ def process_input(input):
     result.append(sub)
     return result
 
-
 def main():
     with open('input.txt', 'r') as file:
         input = file.readlines()
@@ -21,7 +20,6 @@ def main():
             if elf_sum > highest:
                 highest = elf_sum
         print(highest)
-
 
 
 if __name__=="__main__":
