@@ -27,12 +27,27 @@ def total(rounds):
         total += score(round)
     return total
 
+def correct(rounds):    #brings the notation back to the previous understanding of the encryption (by calculating the necessary move)
+    lose = {"A": "Z", "B": "X", "C" : "Y"}
+    tie = {"A": "X", "B": "Y", "C" : "Z"}
+    win = {"A": "Y", "B": "Z", "C" : "X"}
+    for i,val in enumerate(rounds):
+        if val[1] == "X":
+            rounds[i][1] = lose[val[0]]
+        elif val[1] == "Y":
+            rounds[i][1] = tie[val[0]]
+        else:
+            rounds[i][1] = win[val[0]]
+    return rounds
+
+
 def main():
     input = read("input.txt")
     rounds = process(input)
     print(total(rounds))
+    print(total(correct(rounds)))
 
 if __name__=="__main__":
     main()
 
-#answer : 13268
+#answer : 13268 & 15508
