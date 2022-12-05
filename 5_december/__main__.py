@@ -33,10 +33,6 @@ def process(input):
         moves.append([int(x) for x in move])
     return stacks, moves
 
-        #for i,crate in enumerate(crates):
-            #stacks[]
-        #for i,crate in enumerate(crates):
-
 def apply_move(stacks, move):
     for _ in range(move[0]):
         stacks[move[2]-1].append(stacks[move[1]-1].pop())
