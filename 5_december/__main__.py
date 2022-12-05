@@ -42,9 +42,17 @@ def apply_move(stacks, move):
         stacks[move[2]-1].append(stacks[move[1]-1].pop())
     return stacks
 
+def apply_move_9001(stacks, move):
+    intermediary = []
+    for _ in range(move[0]):
+        intermediary.append(stacks[move[1]-1].pop())
+    for _ in range(move[0]):
+        stacks[move[2]-1].append(intermediary.pop())
+    return stacks
+
 def apply_moves(stacks, moves):
     for move in moves:
-        stacks = apply_move(stacks, move)
+        stacks = apply_move_9001(stacks, move)
     return stacks
 
 def result(stacks, moves):
@@ -62,4 +70,4 @@ def main():
 if __name__=="__main__":
     main()
 
-#answer : CWMTGHBDW
+#answer : CWMTGHBDW SSCGWJCRB
