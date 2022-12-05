@@ -15,26 +15,43 @@ def process(input):
             input[i][1][j] = int(limit)
     return input
 
-def overlap(pair):
+def total_overlap(pair):
     if pair[0][0] >= pair[1][0] and pair[0][1] <= pair[1][1]:
         return True
     elif pair[0][0] <= pair[1][0] and pair[0][1] >= pair[1][1]:
         return True
     else: return False
 
-def overlaps(pairs):
+def total_overlaps(pairs):
     number = 0
     for pair in pairs:
-        if overlap(pair):
+        if total_overlap(pair):
+            number += 1
+    return number
+
+def partial_overlap(pair):
+    if total_overlap(pair):
+        return True
+    elif pair[0][0] <= pair[1][0] and pair[0][1] >= pair[1][0]:
+        return True
+    elif pair[0][0] <= pair[1][1] and pair[0][1] >= pair[1][1]:
+        return True
+    else: return False
+
+def partial_overlaps(pairs):
+    number = 0
+    for pair in pairs:
+        if partial_overlap(pair):
             number += 1
     return number
 
 def main():
     input = read("input.txt")
     pairs = process(input)
-    print(overlaps(pairs))
+    print(total_overlaps(pairs))
+    print(partial_overlaps(pairs))
 
 if __name__=="__main__":
     main()
 
-#answer : 450
+#answer : 450 & 837
