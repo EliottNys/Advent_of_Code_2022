@@ -18,14 +18,23 @@ def start_of_packet(input):
         if len(scope) > 4:
             scope.pop(0)
             if all_unique(scope):
-                print(scope)
+                return(i+1)
+
+def start_of_message(input):
+    scope = []  #queue
+    for i,character in enumerate(input[0]):
+        scope.append(character)
+        if len(scope) > 14:
+            scope.pop(0)
+            if all_unique(scope):
                 return(i+1)
 
 def main():
     input = read("input.txt")
     print(start_of_packet(input))
+    print(start_of_message(input))
 
 if __name__=="__main__":
     main()
 
-#answer : 1848
+#answer : 1848 & 2308
