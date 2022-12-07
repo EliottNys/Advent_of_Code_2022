@@ -37,7 +37,6 @@ def analyze_tree(input):
     current_directory = []
     input.pop(0)
     for line in input:
-        print(line)
         line_contents = line.split()
         match line_contents[0]:
             case "$":
@@ -65,13 +64,27 @@ def total_size(tree):
                 size += file_size
     return size
 
+def make_space_for_update(tree):
+    disk_space = 70000000
+    needed_space = 30000000
+    current_directory = tree.files[0]
+    used_space = current_directory.size()
+    to_delete = used_space
+    for file in tree.files:
+        if isinstance(file, Directory):
+            file_size = file.size()
+            if needed_space - (disk_space - used_space) <= file_size < to_delete:
+                to_delete = file_size
+    return to_delete
+
 def main():
     input = read("input.txt")
     tree = analyze_tree(input)
     print(total_size(tree))
+    print(make_space_for_update(tree))
     
 
 if __name__=="__main__":
     main()
 
-#answer : 1307902
+#answer : 1307902 & 7068748
